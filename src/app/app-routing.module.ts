@@ -1,10 +1,24 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { Rotas } from './core/enums/rotas.enum';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: Rotas.INICIO,
+    loadChildren: () =>
+      import('./pages/inicio/inicio.module').then((m) => m.InicioModule),
+  },
+  {
+    path: '**',
+    redirectTo: Rotas.INICIO,
+    pathMatch: 'full'    
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [BrowserModule, RouterModule.forRoot(routes, {useHash: true})],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {}

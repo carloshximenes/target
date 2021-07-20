@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sequência de Fibonacci</h5>
+          <div class="row">
+            <div class="col-6">
+              <label>Último número chamado: {{ displayUltimoNumeroGerado() }}</label>
+            </div>
+            <div class="col-6">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="gerarProximoNumeroFibonacci()"
+              >
+                Próximo número
+              </button>
+            </div>
+            <div class="col">
+              <p>Números já exibidos: {{ displaySequenciaFibonacci() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Visualização de Imagem</h5>
+          <div class="row">
+            <div class="col-6">
+              <img class="img_logo" src="./assets/images/logo.png" *ngIf="exibirImagem" />
+            </div>
+            <div class="col-6">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="exibirImagem = !exibirImagem"
+              >Alterar Status Imagem</button>
+              <p>{{ displayStatusImagem() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
