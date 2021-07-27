@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InicioComponent implements OnInit {
   public sequenciaFibonacci: number[] = [];
   public exibirImagem: boolean = true;
+  public sequenciaNumerica: number[] = Array.from({ length: 11 }, (_, i) => i);
 
   constructor() {}
 
@@ -18,8 +19,8 @@ export class InicioComponent implements OnInit {
   public gerarProximoNumeroFibonacci(): void {
     let ultimaPosicao = this.sequenciaFibonacci.length;
     const proximoNumero = this.fibonacci(ultimaPosicao++);
-  
-    this.sequenciaFibonacci.push(proximoNumero);    
+
+    this.sequenciaFibonacci.push(proximoNumero);
   }
 
   public displaySequenciaFibonacci(): string {
@@ -40,5 +41,18 @@ export class InicioComponent implements OnInit {
 
   public displayStatusImagem(): string {
     return this.exibirImagem ? 'VISÍVEL' : 'INVISÍVEL';
+  }
+
+  public filtrarValor(value: number) {
+    if (value < 0 || value > 10) {
+      return;
+    }
+    this.sequenciaNumerica = Array.from({ length: 11 }, (_, i) => i).filter(
+      (n) => n == value
+    );
+  }
+
+  public resetarSequencia(): void {
+    this.sequenciaNumerica = Array.from({ length: 11 }, (_, i) => i);
   }
 }
